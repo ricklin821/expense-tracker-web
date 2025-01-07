@@ -90,6 +90,31 @@
             </div>
         </div>
     </div>
+    <script>
+        // 立即執行的函數
+        (function() {
+            // 設置預設日期和時間
+            const now = new Date();
+            
+            // 設置日期：格式化為 YYYY-MM-DD
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const dateStr = `${year}-${month}-${day}`;
+            
+            // 設置時間：格式化為 HH:MM
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const timeStr = `${hours}:${minutes}`;
+            
+            // 設置預設值
+            window.onload = function() {
+                document.getElementById('date').value = dateStr;
+                document.getElementById('time').value = timeStr;
+            };
+        })();
+    </script>
+    
     <script src="./script.js"></script>
 </body>
 </html>
