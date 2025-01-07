@@ -1,3 +1,18 @@
+// 在文件開頭添加這個函數
+function setDefaultDateTime() {
+    const now = new Date();
+    
+    // 設置日期
+    const dateInput = document.getElementById('date');
+    dateInput.valueAsDate = now;
+    
+    // 設置時間
+    const timeInput = document.getElementById('time');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    timeInput.value = `${hours}:${minutes}`;
+}
+
 // 初始化支出數據數組
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
@@ -120,3 +135,13 @@ filterButton.addEventListener('click', function() {
 
 // 初始顯示支出列表
 displayExpenses();
+
+// 在文件中找一個合適的位置（例如在 DOMContentLoaded 事件監聽器中）調用這個函數
+document.addEventListener('DOMContentLoaded', function() {
+    setDefaultDateTime();
+    
+    // 其他現有的初始化代碼...
+});
+
+// 如果您之前沒有 DOMContentLoaded 事件監聽器，可以直接在文件末尾添加：
+// setDefaultDateTime();
